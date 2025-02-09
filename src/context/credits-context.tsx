@@ -1,6 +1,6 @@
 'use client';
 
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useState, useCallback } from 'react';
 
 interface CreditsContextType {
   credits: number;
@@ -11,16 +11,16 @@ const CreditsContext = createContext<CreditsContextType | undefined>(undefined);
 
 export function CreditsProvider({ 
   children, 
-  initialCredits = 0 
+  initialCredits = 5
 }: { 
   children: React.ReactNode;
   initialCredits?: number;
 }) {
   const [credits, setCredits] = useState(initialCredits);
 
-  const updateCredits = (newCredits: number) => {
+  const updateCredits = useCallback((newCredits: number) => {
     setCredits(newCredits);
-  };
+  }, []);
 
   return (
     <CreditsContext.Provider value={{ credits, updateCredits }}>

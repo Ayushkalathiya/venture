@@ -20,7 +20,7 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
   const { data: session } = useSession();
   const { credits, updateCredits } = useCredits();
 
-  // Initialize credits from session
+  // Move this effect to the parent component
   useEffect(() => {
     if (session?.user?.credits !== undefined) {
       updateCredits(session.user.credits as number);
@@ -144,12 +144,17 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
   );
 }
 
-// Wrap the layout with CreditsProvider
+// Wrap the layout with CreditsProvider correctly
 export default function Layout({ children }: { children: React.ReactNode }) {
-  const { data: session } = useSession();
+  const { data: session, status } = useSession();
   
+  // Wait for session to be loaded
+  if (status === 'loading') {
+    return null;
+  }
+
   return (
-    <CreditsProvider initialCredits={session?.user?.credits as number || 0}>
+    <CreditsProvider initialCredits={session?.user?.credits ?? 5}>
       <LayoutContent>{children}</LayoutContent>
     </CreditsProvider>
   );

@@ -10,6 +10,7 @@ export async function gemin(promt: string) {
     });
 
     console.log(res);
+    console.log(res);
     
 
     if (res.ok) {
