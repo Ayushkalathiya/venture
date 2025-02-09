@@ -7,6 +7,7 @@ export const authOptions: NextAuthOptions = {
     GoogleProvider({
       clientId: process.env.GOOGLE_CLIENT_ID!,
       clientSecret: process.env.GOOGLE_CLIENT_SECRET!,
+
     }),
   ],
   callbacks: {
@@ -26,29 +27,12 @@ export const authOptions: NextAuthOptions = {
               image: user.image,
               provider: account?.provider,
               providerAccountId: account?.providerAccountId,
-              access_token: account?.access_token,
-              refresh_token: account?.refresh_token,
-              expires_at: account?.expires_at,
-              token_type: account?.token_type,
-              scope: account?.scope,
-              id_token: account?.id_token,
-              session_state: account?.session_state,
-            },
-          });
-        } else {
-          await prisma.user.update({
-            where: { email: user.email },
-            data: {
-              access_token: account?.access_token,
-              refresh_token: account?.refresh_token,
-              expires_at: account?.expires_at,
-              session_state: account?.session_state,
             },
           });
         }
         return true;
       } catch (error) {
-        console.error("Error in signIn callback:", error);
+        console.error('Sign in error:', error);
         return false;
       }
     },
@@ -78,10 +62,6 @@ export const authOptions: NextAuthOptions = {
       else if (new URL(url).origin === baseUrl) return url;
       return baseUrl + "/dashboard";
     },
-  },
-  pages: {
-    signIn: "/auth/signin",
-    error: "/auth/error",
   },
   secret: process.env.NEXTAUTH_SECRET,
 };

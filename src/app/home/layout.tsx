@@ -11,10 +11,10 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
-  DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import Image from 'next/image';
 
 function LayoutContent({ children }: { children: React.ReactNode }) {
   const { data: session } = useSession();
@@ -80,10 +80,12 @@ function LayoutContent({ children }: { children: React.ReactNode }) {
                   <Button variant="ghost" className="flex items-center space-x-2 hover:bg-primary/10">
                     <div className="flex items-center space-x-2">
                       <div className="relative">
-                        <img
-                          src={session.user?.image || "/default-avatar.png"}
-                          alt="User Avatar"
-                          className="w-8 h-8 rounded-full ring-2 ring-primary/20"
+                        <Image 
+                          src={session.user.image || ''} 
+                          alt="Profile" 
+                          width={32} 
+                          height={32}
+                          className="rounded-full"
                         />
                         <div className="absolute bottom-0 right-0 w-2.5 h-2.5 bg-green-500 rounded-full ring-2 ring-white dark:ring-gray-900" />
                       </div>

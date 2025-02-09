@@ -64,6 +64,29 @@ body {
     --chart-4: 280 65% 60%;
     --chart-5: 340 75% 55%;
   }
+  .prose {
+    @apply max-w-none;
+  }
+  
+  .prose p {
+    @apply my-4 first:mt-0 last:mb-0;
+  }
+
+  .prose strong {
+    @apply text-blue-600 dark:text-blue-400 font-semibold;
+  }
+
+  .prose em {
+    @apply text-purple-600 dark:text-purple-400 not-italic font-medium;
+  }
+
+  .prose ul {
+    @apply my-6 list-disc list-inside;
+  }
+
+  .prose li {
+    @apply my-2;
+  }
 }
 
 

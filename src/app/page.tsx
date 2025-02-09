@@ -9,7 +9,7 @@ import Link from "next/link";
 import { useState } from "react";
 
 export default function LandingPage() {
-  const [isHovered, setIsHovered] = useState(false);
+  const [, setIsHovered] = useState(false);
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-[#fdfcfb] via-[#e8eef1] to-[#dfe9f3] dark:from-gray-900 dark:via-gray-800 dark:to-gray-900 text-foreground transition-all">

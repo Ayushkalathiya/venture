@@ -1,12 +1,11 @@
 import { SearchFormClient } from "@/components/search-form";
 import { SearchResults } from "@/components/search-results";
 import { Suspense } from "react";
-import { Sparkles, Users, Rocket, ArrowRight } from "lucide-react";
+import { Sparkles, Users, Rocket, ArrowRight, LucideIcon } from "lucide-react";
 import { AuthCheckClient } from "@/components/auth-check";
 
-
 function FeatureCard({ icon: Icon, title, description }: { 
-  icon: any, 
+  icon: LucideIcon, 
   title: string, 
   description: string 
 }) {

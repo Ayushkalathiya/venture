@@ -15,6 +15,8 @@ export async function POST(request: NextRequest) {
   try {
     const { prompt } = await request.json();
 
+    console.log(prompt);
+
     if (!prompt) {
       return NextResponse.json(
         { error: "Prompt is required" },
