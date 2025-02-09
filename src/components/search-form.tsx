@@ -1,18 +1,16 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { gemin } from "@/app/home/action";
-import { toast } from "sonner";
-import { Skeleton } from "@/components/ui/skeleton";
-import { cn } from "@/lib/utils";
-import { SearchIcon, Loader2, AlertCircle } from "lucide-react";
-import { useSession } from "next-auth/react";
-import { updateUserCredits } from "@/lib/actions/user-actions";
-import { useCredits } from "@/context/credits-context";
+import { Button } from "@/components/ui/button";
 import { Card } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
+import { Input } from "@/components/ui/input";
+import { useCredits } from "@/context/credits-context";
+import { updateUserCredits } from "@/lib/actions/user-actions";
+import { cn } from "@/lib/utils";
+import { Loader2, SearchIcon } from "lucide-react";
+import { useSession } from "next-auth/react";
+import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 // AnimatedResponse component
 const AnimatedResponse = ({ text }: { text: string }) => {
